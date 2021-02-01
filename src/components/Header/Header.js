@@ -7,11 +7,22 @@ import {
   Search,
 } from '@material-ui/icons';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './Header.css';
-import logo from '../../zmail.png';
+import logo from '../../Geemail.png';
+import { logout, selectUser } from '../../redux/userSlice';
+import { auth } from '../../firebase/firebase';
 
 const Header = () => {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const signOut = () => {
+    auth.signOut().then(() => {
+      dispatch(logout());
+    });
+  };
+
   return (
     <div className="header">
       <div className="header_left">
@@ -32,7 +43,7 @@ const Header = () => {
         <IconButton>
           <Notifications />
         </IconButton>
-        <Avatar />
+        <Avatar src={user?.photoUrl} onClick={signOut} />
       </div>
     </div>
   );

@@ -65,9 +65,9 @@ const EmailList = () => {
         </div>
       </div>
       <div className="emailList_sections">
-        <Sections Icon={Inbox} title="Primary" color="red" selected />
+        <Sections Icon={Inbox} title="Primary" color="green" selected />
         <Sections Icon={People} title="Social" color="#1A73E8" />
-        <Sections Icon={LocalOffer} title="Promotions" color="green" />
+        <Sections Icon={LocalOffer} title="Promotions" color="#E8AB29" />
       </div>
       <div className="emailList_list">
         {emails.map(({ id, data: { to, subject, message, timestamp } }) => (
@@ -80,18 +80,6 @@ const EmailList = () => {
             time={new Date(timestamp?.seconds * 1000).toUTCString()}
           />
         ))}
-        <EmailRows
-          title="Twitch"
-          subject="Hey fellow streamers!"
-          description="This is a test"
-          time="10:00pm"
-        />
-        <EmailRows
-          title="Twitch"
-          subject="Hey fellow streamers!"
-          description="This is a test"
-          time="10:00pm"
-        />
       </div>
     </div>
   );
